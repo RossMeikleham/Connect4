@@ -212,7 +212,7 @@ def find(x,y,button):
           if Valid:
              Win=UpdateBoard(i,j)
              if Win==True:
-                print 'Player',Player,'wins'
+                print ('Player',Player,'wins')
                 unset_mousedown_handler(find)
        if i==columns and j==rows: #all values in board have been checked
           end=True
@@ -242,8 +242,4 @@ set_mousedown_handler(find) #set the mouse handler ready
 
 
 run()
-
-
-   
-   
-   
+ 

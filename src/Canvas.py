@@ -2,6 +2,8 @@
 # Quintin Cutts
 # Last modified 20 - 9 - 09
 
+# Last modified 8/8/2015 Ross Meikleham for python 3 compatibility
+
 ### --------------------------------------------------------
 
 ###  IF YOU JUST WANT TO KNOW WHAT FUNCTIONS ARE AVAILABLE
@@ -10,13 +12,22 @@
 
 ### --------------------------------------------------------
 
-from Tkinter import *
+try:
+    from Tkinter import *
+except ImportError:
+    # for Python3
+    from tkinter import *   
+
 import math
 import threading
 import time
-import exceptions
 
-class WindowGone(exceptions.Exception):
+try:
+    from exceptions import *
+except:
+    pass
+
+class WindowGone(Exception):
     def __init__(self, args=[]):
         self.args = args
 
