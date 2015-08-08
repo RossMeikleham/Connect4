@@ -1,7 +1,13 @@
+
+
 #Connect 4 Game
 #By Ross Meikleham 2011
-from Canvas import*
-from random import*
+try:
+    from connect4.Canvas import *
+except ImportError:
+    from Canvas import *
+
+from random import *
 
 #creates 6*7 board using 2 dimensional list
 board=['0']*7
@@ -218,28 +224,32 @@ def find(x,y,button):
           end=True
     return Win
    
- 
-Player=randint(1,2) #obtain player to start with
-if Player==1:
-   colour='red'
-else:
-   colour='yellow'
 
-rows=5
-columns=6
+def play(): 
+    global Player, currentplayer, columns, rows, Win, radius, colour
 
-create_rectangle(0,0,650,600,fill='black')
-create_text(90,20,text='Player 1: Red',fill='red',font="Courier")
-create_text(500,20,text='Player 2: Yellow',fill='yellow',font="Courier")
-currentplayer=create_text(300,40,text='Player'+str(Player)+"'s turn",fill=colour,font="Courier")
-Win=False   
-set_size(650,600)
-set_title('Connect 4 by Ross Meikleham')
-startx=50;starty=100
-endy=570 ;endx=(endy-starty+startx)*(7.0/6) #end x is based on proportional size of other dimensions
-radius=drawboard(startx,starty,endx,endy) #create the 'board'
-set_mousedown_handler(find) #set the mouse handler ready
+    Player=randint(1,2) #obtain player to start with
+    if Player==1:
+        colour='red'
+    else:
+        colour='yellow'
+
+    rows=5
+    columns=6
+
+    create_rectangle(0,0,650,600,fill='black')
+    create_text(90,20,text='Player 1: Red',fill='red',font="Courier")
+    create_text(500,20,text='Player 2: Yellow',fill='yellow',font="Courier")
+    currentplayer=create_text(300,40,text='Player'+str(Player)+"'s turn",fill=colour,font="Courier")
+    Win=False   
+    set_size(650,600)
+    set_title('Connect 4 by Ross Meikleham')
+    startx=50;starty=100
+    endy=570 ;endx=(endy-starty+startx)*(7.0/6) #end x is based on proportional size of other dimensions
+    radius=drawboard(startx,starty,endx,endy) #create the 'board'
+    set_mousedown_handler(find) #set the mouse handler ready
 
 
-run()
- 
+    run()
+
+play() 
